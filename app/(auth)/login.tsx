@@ -5,7 +5,7 @@ const { height } = Dimensions.get("window");
 const LoginScreen = () => {
   return (
     <View style={[styles.container]}>
-      <CustomText fontFamily="PoppinsMedium" type="default">
+      <CustomText fontFamily="SansRegular" type="default">
         Login Screen
       </CustomText>
     </View>

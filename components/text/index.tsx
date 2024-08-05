@@ -32,7 +32,7 @@ const renderStyles = (type: FontType) => {
 export function CustomText({
   style,
   type = "default",
-  fontFamily = "SansMedium",
+  fontFamily = "SansRegular",
   textAlign = "auto",
   ...rest
 }: CustomTextProps) {
@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   xs: { fontSize: 15 },
-  sm: { fontSize: 20 },
+  sm: { fontSize: 17 },
   lg: {
-    fontSize: 16,
+    fontSize: 25,
   },
   xl: {
     fontSize: 30,

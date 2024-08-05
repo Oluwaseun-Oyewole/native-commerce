@@ -1,44 +1,70 @@
+/* eslint-disable global-require */
+import CustomButton from "@/components/button";
 import CustomScrollView from "@/components/scrollview";
 import { CustomText } from "@/components/text";
 import Onboarding from "@/components/ui/onboarding";
 import Colors from "@/utils/colors";
 import onboardingData from "@/utils/data";
 import globalStyles from "@/utils/globalStyles";
+import { Image } from "expo-image";
 import { useRef, useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  StyleSheet,
+  View,
+} from "react-native";
 
+const { height, width } = Dimensions.get("window");
 const OnboardingScreen = () => {
-  // const { width, height } = Dimensions.get("window");
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollRef = useRef<FlatList>(null);
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const scrollIndex = Math.round(event.nativeEvent.contentOffset.x / width);
+    setCurrentIndex(scrollIndex);
+  };
+
+  const onPress = () => {
+    const lastIndex = onboardingData.length - 1;
+    const offset = lastIndex * width;
+    scrollRef?.current?.scrollToOffset({ offset });
+    setCurrentIndex(lastIndex);
+  };
 
   return (
     <CustomScrollView>
       <View style={[globalStyles.flex_grow, styles.container]}>
         <View style={styles.screen_header}>
-          <CustomText fontFamily="Prata" type="heading">
+          <View>
+            <Image
+              source={require("../assets/images/svg/logo1.svg")}
+              style={styles.image}
+            />
+          </View>
+          <CustomText fontFamily="Prata" type="lg">
             Bag More
           </CustomText>
-          <CustomText
-            fontFamily="SansMedium"
-            type="default"
-            style={{
-              position: "absolute",
-              paddingLeft: 60,
-              color: Colors.orange,
-              textDecorationLine: "underline",
-              bottom: 15,
-              right: 25,
-            }}
-          >
-            Skip
-          </CustomText>
+
+          <View style={styles.button}>
+            <CustomButton
+              fontFamily="SansBold"
+              textStyles={{
+                color: Colors.orange,
+                textDecorationLine: "underline",
+              }}
+              onPress={onPress}
+            >
+              Skip
+            </CustomButton>
+          </View>
         </View>
 
         <FlatList
           data={onboardingData}
-          // ref={scrollRef}
-          // onMomentumScrollEnd={handleScroll}
+          ref={scrollRef}
+          onMomentumScrollEnd={handleScroll}
           keyExtractor={(item) => item.title}
           showsHorizontalScrollIndicator={false}
           horizontal
@@ -67,11 +93,14 @@ const styles = StyleSheet.create({
     // paddingLeft: 60,
     // paddingRight: 10,
   },
+  image: { height: 20, width: 15 },
   screen_header: {
     position: "relative",
-    paddingTop: 50,
+    height: height * 0.15,
+    // paddingTop: 50,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
+  button: { position: "absolute", paddingLeft: 60, bottom: 48, right: 28 },
 });

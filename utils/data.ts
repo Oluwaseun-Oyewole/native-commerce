@@ -4,7 +4,7 @@ const onboardingData = [
     id: 0,
     title: "Don't miss out",
     description: "Help us deliver your product to the right place for you",
-    path: require("../assets/images/svg/camera.svg"),
+    path: require("../assets/images/svg/first.svg"),
   },
   {
     id: 1,
