@@ -1,9 +1,10 @@
-import { Text, View } from "react-native";
+import { CustomText } from "@/components/text";
+import { View } from "react-native";
 
 const HomeScreen = () => {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <CustomText>HomeScreen</CustomText>
     </View>
   );
 };
