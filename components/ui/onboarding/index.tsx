@@ -9,14 +9,13 @@ import { useRouter } from "expo-router";
 import React, { ForwardRefRenderFunction, forwardRef } from "react";
 import { Dimensions, FlatList, StyleSheet, View } from "react-native";
 
-const { width, height } = Dimensions.get("window");
-
 type OnboardingType = {
   index: number;
   currentIndex: number;
   item: { id: number; path: string; title: string; description: string };
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
 };
+const { width, height } = Dimensions.get("window");
 const Onboarding: ForwardRefRenderFunction<FlatList, OnboardingType> = (
   { index, currentIndex, item, setCurrentIndex }: OnboardingType,
   ref,
@@ -36,44 +35,48 @@ const Onboarding: ForwardRefRenderFunction<FlatList, OnboardingType> = (
       replace(Routes.Home);
     }
   };
+
   return (
     <View key={index} style={[styles.container]}>
       <View
         style={{
           alignItems: "center",
-          paddingTop: 70,
+          paddingTop: 60,
         }}
       >
         <Image source={item.path} style={styles.image} />
+        {currentIndex === onboardingData.length - 1 && (
+          <Image
+            // eslint-disable-next-line global-require
+            source={require("../../../assets/images/svg/spiral1.svg")}
+            style={styles.spiral_image}
+          />
+        )}
         <View style={{ width: width * 0.75 }}>
           <CustomText
             type="lg"
             textAlign="center"
             fontFamily="Prata"
-            style={{ paddingTop: 50, paddingBottom: 10 }}
+            style={styles.text_title}
           >
             {capitalize(item.title)}
           </CustomText>
           <CustomText
             type="sm"
             textAlign="center"
-            style={{ paddingHorizontal: 10, color: "#595959" }}
+            style={styles.text_description}
           >
             {item.description}
           </CustomText>
         </View>
       </View>
-      <View
-        style={{
-          backgroundColor: "#000",
-          width,
-          height: height * 0.1,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <View style={styles.button_container}>
         <View>
-          <CustomButton isCapitalize onPress={onPress}>
+          <CustomButton
+            isCapitalize
+            onPress={onPress}
+            textStyles={{ color: Colors.white }}
+          >
             Accept
           </CustomButton>
         </View>
@@ -87,24 +90,28 @@ export default forwardRef(Onboarding);
 const styles = StyleSheet.create({
   container: {
     width,
-    // alignItems: "center",
     justifyContent: "space-between",
   },
-  image: { width, resizeMode: "contain", height: 220 },
-  indicator: {
-    width: 30,
-    height: 8,
-    backgroundColor: Colors.secondary,
-    borderRadius: 50,
-  },
-  indicator_container: {
-    flexDirection: "row",
-    gap: 10,
-    paddingTop: 60,
-    paddingBottom: 20,
-  },
+  image: { width, resizeMode: "contain", height: 210 },
   active_indicator: { backgroundColor: Colors.primary, width: 15 },
   button_container: {
-    marginTop: 80,
+    backgroundColor: "#000",
+    width,
+    height: height * 0.1,
+    alignItems: "center",
+    justifyContent: "center",
   },
+  text_title: {
+    paddingTop: 50,
+    paddingBottom: 10,
+  },
+  spiral_image: {
+    position: "absolute",
+    zIndex: 100,
+    top: -150,
+    left: 70,
+    width,
+    height: 300,
+  },
+  text_description: { paddingHorizontal: 10, color: "#595959" },
 });

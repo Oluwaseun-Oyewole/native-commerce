@@ -25,14 +25,12 @@ const OnboardingScreen = () => {
     const scrollIndex = Math.round(event.nativeEvent.contentOffset.x / width);
     setCurrentIndex(scrollIndex);
   };
-
   const onPress = () => {
     const lastIndex = onboardingData.length - 1;
     const offset = lastIndex * width;
     scrollRef?.current?.scrollToOffset({ offset });
     setCurrentIndex(lastIndex);
   };
-
   return (
     <CustomScrollView>
       <View style={[globalStyles.flex_grow, styles.container]}>
@@ -49,7 +47,7 @@ const OnboardingScreen = () => {
 
           <View style={styles.button}>
             <CustomButton
-              fontFamily="SansBold"
+              fontFamily="Prata"
               textStyles={{
                 color: Colors.orange,
                 textDecorationLine: "underline",
@@ -89,15 +87,11 @@ const OnboardingScreen = () => {
 export default OnboardingScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    // paddingLeft: 60,
-    // paddingRight: 10,
-  },
+  container: {},
   image: { height: 20, width: 15 },
   screen_header: {
     position: "relative",
     height: height * 0.15,
-    // paddingTop: 50,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
