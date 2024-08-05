@@ -4,6 +4,7 @@
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "prettier",
+    "plugin:react/jsx-runtime",
     "plugin:prettier/recommended"
   ],
   "plugins": ["@typescript-eslint", "react", "prettier"],
@@ -28,7 +29,9 @@
     "@typescript-eslint/no-use-before-define": "off",
     "import/extensions": ["error", "never"],
     "react/prop-types": 0,
+    "global-require": 0  ,
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": "off"
+    "@typescript-eslint/no-shadow": "off",
+    "@typescript-eslint/no-require-imports": "off"
   }
 }
