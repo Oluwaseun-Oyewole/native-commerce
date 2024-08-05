@@ -1,1 +1,1 @@
-export type FontFamilyType = "SansMedium";
+export type FontFamilyType = "SansMedium" | "SansBold" | "Prata";

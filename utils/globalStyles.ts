@@ -1,14 +1,13 @@
 import { StyleSheet } from "react-native";
-import Colors from "./colors";
 
 const globalStyles = StyleSheet.create({
   darkTheme: { backgroundColor: "#000" },
   lightTheme: { backgroundColor: "#fff" },
   container: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.white,
+    // backgroundColor: Colors.primary,
   },
   flex_grow: { flex: 1 },
   col_center: {

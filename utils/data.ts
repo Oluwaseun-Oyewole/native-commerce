@@ -1,15 +1,23 @@
+/* eslint-disable global-require */
 const onboardingData = [
   {
     id: 0,
-    heading: "Trusted by millions of people, part of one part",
+    title: "Don't miss out",
+    description: "Help us deliver your product to the right place for you",
+    path: require("../assets/images/svg/camera.svg"),
   },
   {
     id: 1,
-    heading: "Spend money abroad, and track your expenses",
+    title: "Add your location",
+    description: "Help us deliver your product to the right place for you",
+    path: require("../assets/images/svg/location.svg"),
   },
   {
     id: 2,
-    heading: "Receive money from anywhere in the world",
+    title: "Camera",
+    description: "Meko needs permission to access your camera photo",
+    path: require("../assets/images/svg/camera.svg"),
   },
 ];
+
 export default onboardingData;

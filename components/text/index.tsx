@@ -1,7 +1,7 @@
 import { FontFamilyType } from "@/types";
 import { StyleSheet, Text, type TextProps } from "react-native";
 
-type FontType = "default" | "lg" | "xl" | "xxl" | "sm" | "xs";
+type FontType = "default" | "lg" | "xl" | "xxl" | "sm" | "xs" | "heading";
 
 export type CustomTextProps = TextProps & {
   type?: FontType;
@@ -22,6 +22,8 @@ const renderStyles = (type: FontType) => {
       return styles.xl;
     case "xxl":
       return styles.xxl;
+    case "heading":
+      return styles.heading;
     default:
       return styles.default;
   }
@@ -52,19 +54,19 @@ export function CustomText({
 const styles = StyleSheet.create({
   default: {
     fontSize: 16,
-    lineHeight: 24,
+  },
+  heading: {
+    fontSize: 35,
   },
   xs: { fontSize: 15 },
   sm: { fontSize: 20 },
   lg: {
     fontSize: 16,
-    lineHeight: 24,
   },
   xl: {
     fontSize: 30,
   },
   xxl: {
     fontSize: 16,
-    lineHeight: 24,
   },
 });

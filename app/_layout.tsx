@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+import { AuthProvider } from "@/context";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -10,10 +11,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
+    Prata: require("../assets/fonts/Prata-Regular.ttf"),
     SansBold: require("../assets/fonts/static/DMSans-Bold.ttf"),
+    SansRegular: require("../assets/fonts/static/DMSans_18pt-Regular.ttf"),
     SansMedium: require("../assets/fonts/static/DMSans-Medium.ttf"),
-    SansRegular: require("../assets/fonts/static/DMSans-Regular.ttf"),
-    SansLight: require("../assets/fonts/static/DMSans_18pt-Light.ttf"),
+    SansLight: require("../assets/fonts/static/DMSans-Light.ttf"),
     SansExtraBold: require("../assets/fonts/static/DMSans-ExtraBold.ttf"),
   });
 
@@ -28,9 +30,11 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="+not-found" />
-    </Stack>
+    <AuthProvider>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+    </AuthProvider>
   );
 }
