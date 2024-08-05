@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -9,8 +10,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    // eslint-disable-next-line global-require
     SansBold: require("../assets/fonts/static/DMSans-Bold.ttf"),
+    SansMedium: require("../assets/fonts/static/DMSans-Medium.ttf"),
+    SansRegular: require("../assets/fonts/static/DMSans-Regular.ttf"),
+    SansLight: require("../assets/fonts/static/DMSans_18pt-Light.ttf"),
+    SansExtraBold: require("../assets/fonts/static/DMSans-ExtraBold.ttf"),
   });
 
   useEffect(() => {
