@@ -7,7 +7,6 @@ export type CustomTextProps = TextProps & {
   type?: FontType;
   fontFamily?: FontFamilyType;
   textAlign?: "auto" | "left" | "right" | "center" | "justify";
-  color?: string;
 };
 
 const renderStyles = (type: FontType) => {
@@ -67,6 +66,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   xxl: {
-    fontSize: 16,
+    fontSize: 35,
   },
 });

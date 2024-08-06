@@ -8,3 +8,7 @@ export const truncate = (s: string, length: number) => {
 export const capitalize = (s: string) => {
   return s.toUpperCase();
 };
+
+export const strCapitalize = (s: string) => {
+  return s.slice(0, 1).toUpperCase() + s.slice(1);
+};

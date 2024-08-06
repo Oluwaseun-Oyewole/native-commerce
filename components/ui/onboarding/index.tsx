@@ -45,11 +45,12 @@ const Onboarding: ForwardRefRenderFunction<FlatList, OnboardingType> = (
         }}
       >
         <Image source={item.path} style={styles.image} />
+
         {currentIndex === onboardingData.length - 1 && (
           <Image
             // eslint-disable-next-line global-require
             source={require("../../../assets/images/svg/spiral1.svg")}
-            style={styles.spiral_image}
+            style={styles.spiral}
           />
         )}
         <View style={{ width: width * 0.75 }}>
@@ -105,13 +106,6 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingBottom: 10,
   },
-  spiral_image: {
-    position: "absolute",
-    zIndex: 100,
-    top: -150,
-    left: 70,
-    width,
-    height: 300,
-  },
+  spiral: { position: "absolute", bottom: -270, left: 10, width, height: 300 },
   text_description: { paddingHorizontal: 10, color: "#595959" },
 });
