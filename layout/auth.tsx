@@ -10,8 +10,13 @@ import { View } from "react-native";
 const AuthWrapper = ({
   children,
   title,
-  description,
-}: PropsWithChildren & { title: string; description: string }) => {
+  description = "",
+  hideHeader = false,
+}: PropsWithChildren & {
+  title: string;
+  description?: string;
+  hideHeader?: boolean;
+}) => {
   const { back, push } = useRouter();
   const { currentStep, setCurrentStep } = useAuth();
   return (
@@ -28,10 +33,13 @@ const AuthWrapper = ({
             back();
           }}
         />
-        <View>
-          <AuthHeader title={title} description={description} />
-          {children}
-        </View>
+
+        <AuthHeader
+          title={title}
+          description={description}
+          hideHeader={hideHeader}
+        />
+        {children}
       </View>
     </CustomScrollView>
   );

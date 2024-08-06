@@ -17,6 +17,8 @@ export default function RootLayout() {
     SansMedium: require("../assets/fonts/static/DMSans-Medium.ttf"),
     SansLight: require("../assets/fonts/static/DMSans-Light.ttf"),
     SansExtraBold: require("../assets/fonts/static/DMSans-ExtraBold.ttf"),
+    Nexa: require("../assets/fonts/Nexa Light.otf"),
+    NexaBold: require("../assets/fonts/Nexa Bold.otf"),
   });
 
   useEffect(() => {
@@ -34,6 +36,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="(app)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </AuthProvider>

@@ -4,4 +4,12 @@ export type FontFamilyType =
   | "Prata"
   | "SansExtraBold"
   | "SansLight"
-  | "SansRegular";
+  | "SansRegular"
+  | "Nexa"
+  | "NexaBold";
+
+export type LanguageType = {
+  id: number;
+  path: string;
+  countryName: string;
+};

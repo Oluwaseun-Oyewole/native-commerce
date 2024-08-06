@@ -9,9 +9,8 @@ type FormType = {
 const FormError = ({ error }: FormType) => {
   return (
     <CustomText
-      style={{ paddingTop: 8, color: Colors.red }}
+      style={{ paddingTop: 8, color: Colors.red, fontSize: 12 }}
       fontFamily="SansMedium"
-      type="xs"
     >
       {strCapitalize(error)}
     </CustomText>
